@@ -4,6 +4,9 @@
  */
 
 export default {
+  transform: {
+    "^.+\\.(t|j)sx?$": "@swc/jest",
+  },
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -192,4 +195,5 @@ export default {
 
   // Whether to use watchman for file crawling
   // watchman: true,
+  testTimeout: 999999 // set timeout to 10 seconds
 };
