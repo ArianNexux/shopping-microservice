@@ -24,6 +24,9 @@ export default class Product {
             throw new InvalidDataProvided("price")
         }
     }
+    public getId(): string {
+        return this.id;
+    }
 
     public getName(): string {
         return this.name;
