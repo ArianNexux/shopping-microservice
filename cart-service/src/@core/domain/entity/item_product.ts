@@ -1,6 +1,6 @@
 import InvalidDataProvided from "../errors/invalid-data";
 
-export default class Product {
+export default class ItemProduct {
 
     constructor(
         private id: string,
@@ -44,9 +44,5 @@ export default class Product {
     public changeName(name: string): void {
         this.validate()
         this.name = name
-    }
-
-    public toJSon(): {} {
-        return { id: this.id, name: this.name, price: this.price }
     }
 }

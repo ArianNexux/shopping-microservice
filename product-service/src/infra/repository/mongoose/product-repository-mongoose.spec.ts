@@ -31,6 +31,7 @@ describe("Suit test for Product Repository with Mongoose", () => {
         await productRepository.create(product);
 
         let productOutput = await productModel.findById(product.getId()).exec();
+
         expect(product.getId()).toBe(productOutput?._id)
         expect(product.getName()).toBe(productOutput?.name)
         expect(product.getPrice()).toBe(productOutput?.price)
@@ -53,4 +54,8 @@ describe("Suit test for Product Repository with Mongoose", () => {
     afterEach(async () => {
         await productModel.deleteMany({})
     })
+
+    /* afterAll(() => {
+         mongoose.connection.close()
+     })*/
 })

@@ -3,15 +3,16 @@ import ProductRepositoryInterface from "../../../domain/repository/product-repos
 import productModel from './product-schema'
 export default class ProductRepositoryMongoose implements ProductRepositoryInterface {
 
-    async create(entity: Product): Promise<void> {
+    async create(entity: Product): Promise<any> {
 
         const product = new productModel({
             _id: entity.getId(),
             name: entity.getName(),
             price: entity.getPrice()
         });
+        const result = await product.save()
 
-        await product.save()
+        return result;
 
     }
 

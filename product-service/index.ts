@@ -1,1 +1,1 @@
-console.log("Ola mundo")
+import 'dotenv/config'

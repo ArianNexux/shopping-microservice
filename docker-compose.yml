@@ -1,0 +1,40 @@
+version: '3'
+services:
+  rabbitmq:
+    image: rabbitmq:3.11.10-management
+    container_name: rabbitmq_management
+    ports: 
+    - 25672:25672 
+    - 15672:15672 
+    - 5672:5672
+    volumes:
+    - /docker_conf/rabbitmq/data/:/var/lib/rabbitmq/
+    environment:
+    - RABBITMQ_DEFAULT_USER=admin
+    - RABBITMQ_DEFAULT_PASS=passw123
+    - RABBITMQ_ERLANG_COOKIE = SDSFF345543
+    restart: always
+  mongodb1:
+    image: mongo:latest
+    container_name: mongodb_c1
+    ports: 
+    - 27017:27017
+    environment:
+    - MONGO_INITDB_ROOT_USERNAME=root
+    - MONGO_INITDB_ROOT_PASSWORD=root
+    restart: always
+  postgres_db:
+    image: postgres:15.2
+    container_name: postgres_kusta
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    ports: 
+    - 5432:5432
+    environment:
+    - POSTGRES_USER=admin
+    - POSTGRES_PASSWORD=admin
+    restart: always
+volumes:
+    logs-folder:
+        name: ${log_rabbitmq_management}
+        driver: local
